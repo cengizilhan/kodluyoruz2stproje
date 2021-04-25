@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span id="date"></span>
+
+    <script>
+       var name = prompt("İsminiz", "");
+        
+        var intervalId = window.setInterval(function () {
+            dater();
+        }, 1000);
+        dater();
+
+        function dater() {
+            let date = new Date();
+            let dayCount = date.getDay();
+            let day = date.getDate();
+            let seconds = date.getSeconds();
+            let minutes = date.getMinutes();
+            let hour = date.getHours();
+            seconds = intZeroFill(seconds);
+            minutes = intZeroFill(minutes);
+            hour = intZeroFill(hour);
+            function intZeroFill(n) {
+                return (n < 10) ? ("0" + n) : n;
+            }
+            let hourstring = `${hour}:${minutes}:${seconds}`;
+            console.log("hours");
+            console.log(hourstring);
+            let weekday = new Array(7);
+            weekday[0] = "Pazartesi";
+            weekday[1] = "Salı";
+            weekday[2] = "Çarşamba";
+            weekday[3] = "Perşembe";
+            weekday[4] = "Cuma";
+            weekday[5] = "Cumartesi";
+            weekday[6] = "Pazar";
+            console.log("Bugün " + weekday[dayCount]);
+            var div = document.getElementById('date');
+            div.innerHTML = `Hoş geldin ${name}: Saat: ${hourstring}`;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
